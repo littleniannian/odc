@@ -64,7 +64,6 @@ public class DebuggeeSession extends AbstractDebugSession {
         // 设置超时时间, 单位：us
         // 设置debug工作线程的超时时间，单位：s 2min
         List<String> initSqls = Arrays.asList(
-                String.format("set session ob_query_timeout = %s;", DEBUG_TIMEOUT_MS * 1000),
                 String.format("select dbms_debug.set_timeout(%s) from dual;", 120));
         acquireNewConnection(connectionSession, () -> acquireDataSource(connectionSession, initSqls));
         // OceanBaseConnection can accept null as executor
